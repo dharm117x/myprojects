@@ -1,0 +1,9 @@
+<form th:action="@{${actionUrl}}" th:object="${job}" method="post">
+    Job Name: <input type="text" name="jobName" th:value="${job.jobName}"  th:readonly="${isDisabled}"  /><br/>
+    Job Group: <input type="text" name="jobGroup" th:value="${job.jobGroup}" th:readonly="${isDisabled}"  /><br/>
+    Job Class: <input type="text" name="jobClass" value="com.reports.quartz.jobs.SampleJob"/><br/>
+    Cron Expression: <input type="text" name="cronExpression" value="0/10 * * * * ?"/><br/>
+    
+    <button type="submit" th:text="${isDisabled ? 'Update':'Save'}"></button>
+    
+</form>

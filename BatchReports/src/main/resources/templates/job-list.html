@@ -1,0 +1,36 @@
+
+<a href="/quartz/add">Add New Job</a> <br/><br/>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Group</th>
+        <th>Cron</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="job : ${jobs}">
+        <td th:text="${job.jobName}"></td>
+        <td th:text="${job.jobGroup}"></td>
+        <td th:text="${job.cronExpression}"></td>
+        <td th:text="${job.status}"></td>
+        <td>
+            <form th:action="@{/quartz/pause}" method="post" style="display:inline;">
+                <input type="hidden" name="jobName" th:value="${job.jobName}"/>
+                <input type="hidden" name="jobGroup" th:value="${job.jobGroup}"/>
+                <button>Pause</button>
+            </form>
+            <form th:action="@{/quartz/resume}" method="post" style="display:inline;">
+                <input type="hidden" name="jobName" th:value="${job.jobName}"/>
+                <input type="hidden" name="jobGroup" th:value="${job.jobGroup}"/>
+                <button>Resume</button>
+            </form>
+            <form th:action="@{/quartz/delete}" method="post" style="display:inline;">
+                <input type="hidden" name="jobName" th:value="${job.jobName}"/>
+                <input type="hidden" name="jobGroup" th:value="${job.jobGroup}"/>
+                <button>Delete</button>
+            </form>
+            <a th:href="@{/quartz/edit(jobName=${job.jobName}, jobGroup=${job.jobGroup})}">Edit</a>
+        </td>
+    </tr>
+</table>
