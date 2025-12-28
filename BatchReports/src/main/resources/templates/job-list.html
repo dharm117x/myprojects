@@ -7,13 +7,18 @@
         <th>Group</th>
         <th>Cron</th>
         <th>Status</th>
-        <th>Actions</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+     	<th>Actions</th>
+       
     </tr>
     <tr th:each="job : ${jobs}">
         <td th:text="${job.jobName}"></td>
         <td th:text="${job.jobGroup}"></td>
         <td th:text="${job.cronExpression}"></td>
         <td th:text="${job.status}"></td>
+        <td th:text="${job.startTime}"></td>
+        <td th:text="${job.endTime}"></td>
         <td>
             <form th:action="@{/quartz/pause}" method="post" style="display:inline;">
                 <input type="hidden" name="jobName" th:value="${job.jobName}"/>

@@ -11,10 +11,12 @@ import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
+import org.quartz.impl.matchers.KeyMatcher;
 import org.springframework.stereotype.Service;
 
 import com.reports.core.mapper.ConfigMapper;
 import com.reports.quartz.dto.JobConfigDto;
+import com.reports.quartz.listener.QuartzJobListener;
 import com.reports.quartz.model.JobConfig;
 import com.reports.quartz.repository.JobConfigRepository;
 
@@ -39,6 +41,7 @@ public class QuartzJobService {
 				.withSchedule(CronScheduleBuilder.cronSchedule(job.getCronExpression())).build();
 
 		scheduler.scheduleJob(jobDetail, trigger);
+		scheduler.getListenerManager().addJobListener(new QuartzJobListener(jobRepo));
 		job.setStatus("ACTIVE");
 		JobConfig entity = configMapper.toEntity(job);
 		jobRepo.save(entity);
