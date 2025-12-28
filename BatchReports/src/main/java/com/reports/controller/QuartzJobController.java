@@ -1,4 +1,4 @@
-package com.reports.quartz.controller;
+package com.reports.controller;
 
 import java.util.List;
 
