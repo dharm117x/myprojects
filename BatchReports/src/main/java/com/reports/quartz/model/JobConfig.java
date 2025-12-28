@@ -22,7 +22,7 @@ public class JobConfig {
 	private String cronExpression;
 	private String description;
 	private String status;
-	private LocalDateTime createdAt;
+	private LocalDateTime createdAt = LocalDateTime.now();
 
 	public Long getId() {
 		return id;
