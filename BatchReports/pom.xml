@@ -9,7 +9,7 @@
 		<version>3.2.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.reports</groupId>
+	<groupId>com.project</groupId>
 	<artifactId>BatchReports</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBootBatch</name>
