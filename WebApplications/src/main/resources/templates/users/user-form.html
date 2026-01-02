@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Form</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/app.css}"/>
+</head>
+<body>
+
+<h2 th:text="${userForm.id == null ? 'Add User' : 'Edit User'}"></h2>
+
+<form th:action="@{/users/save}"
+      th:object="${userForm}"
+      method="post">
+
+    <!-- CSRF Token -->
+    <input type="hidden" th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}"/>
+
+    <!-- Hidden ID for Edit -->
+    <input type="hidden" th:field="*{id}"/>
+
+    <!-- Name -->
+    <div>
+        <label>Name</label><br/>
+        <input type="text" th:field="*{name}" />
+        <div class="error"
+             th:if="${#fields.hasErrors('name')}"
+             th:errors="*{name}">
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div>
+        <label>Email</label><br/>
+        <input type="text" th:field="*{email}" />
+        <div class="error"
+             th:if="${#fields.hasErrors('email')}"
+             th:errors="*{email}">
+        </div>
+    </div>
+    <!-- Password -->
+    <div>
+        <label>Password</label><br/>
+        <input type="password" th:field="*{passwrod}" />
+        <div class="error"
+             th:if="${#fields.hasErrors('passwrod')}"
+             th:errors="*{passwrod}">
+        </div>
+    </div>
+
+    <!-- Role -->
+    <div>
+        <label>Role</label><br/>
+        <select th:field="*{role}">
+            <option value="">-- Select Role --</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+        </select>
+        <div class="error"
+             th:if="${#fields.hasErrors('role')}"
+             th:errors="*{role}">
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div style="margin-top: 15px">
+        <button type="submit">Save</button>
+        <a th:href="@{/users}">Cancel</a>
+    </div>
+
+</form>
+
+</body>
+</html>
