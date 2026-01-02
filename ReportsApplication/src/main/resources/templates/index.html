@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>
+<body>
+<body>
+	<h1>Welcome to </h1>
+	<div>
+		<a href="/quartz">Quartz Application</a>
+		<div th:if="${successMessage}" class="alert success">
+	    	<span th:text="${successMessage}"></span>
+		</div>
+		
+		<!-- Error Message -->
+		<div th:if="${errorMessage}" class="alert error">
+		    <span th:text="${errorMessage}"></span>
+		</div>
+	
+	    <h2>Start Batch Jobs</h2>
+	    <h3>Database Job</h3>
+		<form action="/batch/db-job" method="post">
+			<input type="date" name="fromDate" required />
+			<input type="date" name="toDate" required />
+			<input type="submit" value="Start Batch Job" />
+		</form>
+		
+		<h3>File Job</h3>
+		<form action="/batch/file-job" method="post">
+			<input type="text" name="fileName" placeholder="Enter file name" required />
+			<input type="submit" value="Start Batch Job" />
+		</form>
+	</div>
+	
+</body>
+
+</html>

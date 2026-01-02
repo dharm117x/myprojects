@@ -2,3 +2,17 @@
 h1,div {
     text-align: center;
 }
+
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.success {
+    background: #e6fffa;
+    color: #065f46;
+}
+.error {
+    background: #ffe6e6;
+    color: #7f1d1d;
+}

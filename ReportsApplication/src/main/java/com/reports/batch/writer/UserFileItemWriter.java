@@ -14,12 +14,12 @@ import com.reports.batch.entity.User;
 @StepScope
 public class UserFileItemWriter extends FlatFileItemWriter<User> {
 	
-	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public UserFileItemWriter(
             @Value("#{jobParameters['outputFile']}") String outputFile) {
 
-        setResource(new FileSystemResource(outputFile));
+        setResource(new FileSystemResource("./target/"+outputFile));
         setAppendAllowed(false);   // overwrite file
         setHeaderCallback(writer -> writer.write("ID|NAME|EMAIL|CREATED_DT"));
 
