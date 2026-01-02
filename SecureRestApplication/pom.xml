@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.project</groupId>
-	<artifactId>SecureRestApiServices</artifactId>
+	<artifactId>SecureRestApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBootBatch</name>
 	<description>Demo project for Spring Boot</description>
